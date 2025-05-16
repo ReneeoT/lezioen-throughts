@@ -33,7 +33,7 @@ jobs:
         run: docker-compose -f docker-compose.yml exec microservizio python init_db.py
 
       - name: esegui un test
-        run: docker-compose -f docker-compose.yml up exec microservizio pytest
+        run: docker-compose -f docker-compose.yml exec microservizio pytest
 
       - name: Cleanup finale
         run: docker-compose -f docker-compose.yml down -v
