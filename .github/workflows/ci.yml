@@ -10,7 +10,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    enviroments: docker-repository
+    environment: docker-repository
 
     steps:
       - name: Checkout codice
