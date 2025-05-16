@@ -25,7 +25,7 @@ def app_context():
         db.drop_all()
 
 def test_db_integration_postgress(app_context):
-    through = ThoughtModel(username="postgress user", text="Dato")
+    thought = ThoughtModel(username="postgress user", text="Dato")
     db.session.add(thought)
     db.session.commit
 
