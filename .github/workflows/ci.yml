@@ -10,6 +10,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    enviroments: docker-repository
 
     steps:
       - name: Checkout codice
@@ -37,3 +38,14 @@ jobs:
 
       - name: Cleanup finale
         run: docker-compose -f docker-compose.yml down -v
+
+      - name: Docker login
+        run: |
+          echo "${{ secret.DOCKER_PASSWORD}}" | \
+          docker login -u  "{{ secret.DOCKER_USERNAME}}" --password-stdin
+
+      - name: Docker build
+        run: docker build -t pulciotto/container-lezione:$GITHUB_SHA
+
+      - name: Docker puush
+        run: docker build  pulciotto/container-lezione:$GITHUB_SHA
